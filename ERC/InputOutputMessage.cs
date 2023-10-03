@@ -55,6 +55,7 @@ namespace ERC
             switch (key)
             {
                 case '1':
+                    Console.Clear();
                     using(recordDBContext db = new recordDBContext())
                     {
                         var table = db.ResultData.ToList();
@@ -68,6 +69,7 @@ namespace ERC
                     Console.ReadKey();
                  break;
                 case '2':
+                    Console.Clear();
                     using (recordDBContext db = new recordDBContext())
                     {
                         var table = db.ElectricityBills.ToList();

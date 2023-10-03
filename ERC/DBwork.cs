@@ -70,21 +70,6 @@ namespace ERC
             return dataResult;
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public void RecordDB(ResultDatum data)
         {
             using(recordDBContext db = new recordDBContext())
@@ -99,6 +84,24 @@ namespace ERC
             {
                 db.ElectricityBills.Add(data);
                 db.SaveChanges();
+            }
+        }
+        public void DeletDB()
+        {
+            using (recordDBContext db = new recordDBContext())
+            {
+                var list = db.ElectricityBills.ToList();
+                foreach (var item in list)
+                {
+                    db.ElectricityBills.Remove(item);
+                    db.SaveChanges();
+                }
+                var list1 = db.ResultData.ToList();
+                foreach(var item in list1)
+                {
+                    db.ResultData.Remove(item);
+                    db.SaveChanges();
+                }
             }
         }
 
